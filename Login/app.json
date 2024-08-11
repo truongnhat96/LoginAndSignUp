@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "String_Name": "Server=.;Database=TEMP;Trusted_Connection=True;TrustServerCertificate=True;"
+  }
+}
