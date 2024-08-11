@@ -54,7 +54,7 @@ namespace Login
                 pass.ConnectToSqlServer("Server=.;Database=DATA_USER;Trusted_Connection=True;TrustServerCertificate=True;");
                 if (pass.password == null)
                 {
-                    MessageBox.Show("Số điện thoại không tồn tại!", "Error ⊙﹏⊙∥", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Số điện thoại không liên kết với tài khoản!\nVui lòng thử một số điện thoại khác", "Error ⊙﹏⊙∥", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {

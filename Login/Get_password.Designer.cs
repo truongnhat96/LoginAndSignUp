@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Get_password));
             this.label1 = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -42,6 +43,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(142, 44);
@@ -52,6 +54,7 @@
             // 
             // lblTime
             // 
+            this.lblTime.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTime.Location = new System.Drawing.Point(106, 241);
             this.lblTime.Name = "lblTime";
@@ -67,6 +70,7 @@
             // 
             // btnMk
             // 
+            this.btnMk.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnMk.BackColor = System.Drawing.Color.DarkGray;
             this.btnMk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMk.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -80,6 +84,7 @@
             // 
             // rtxtPhone
             // 
+            this.rtxtPhone.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rtxtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtxtPhone.Location = new System.Drawing.Point(124, 123);
             this.rtxtPhone.Name = "rtxtPhone";
@@ -89,6 +94,7 @@
             // 
             // lblMatKhau
             // 
+            this.lblMatKhau.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblMatKhau.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMatKhau.ForeColor = System.Drawing.Color.Blue;
             this.lblMatKhau.Location = new System.Drawing.Point(107, 409);
@@ -99,6 +105,7 @@
             // 
             // btnGetmk
             // 
+            this.btnGetmk.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnGetmk.BackColor = System.Drawing.Color.Lime;
             this.btnGetmk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGetmk.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -126,6 +133,7 @@
             this.Controls.Add(this.btnMk);
             this.Controls.Add(this.lblTime);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Get_password";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Lấy lại mật khẩu";
