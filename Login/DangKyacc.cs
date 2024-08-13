@@ -94,7 +94,7 @@ namespace Login
             }
 
             ExitAccount account = new ExitAccount(txtNameAcc.Text, txtSdt.Text);
-            account.ConnectToSqlServer("Server=.;Database=DATA_USER;Trusted_Connection=True;TrustServerCertificate=True;");
+            account.ConnectToSqlServer(ConnectionStrings.Name);
             if(account.GetAccounts.Count > 0)
             {
                 foreach (ExitAccount acc in account.GetAccounts)
@@ -109,7 +109,7 @@ namespace Login
             if (result == DialogResult.OK)
             {
                 InsertInfor user = new InsertInfor(txtNameAcc.Text, txtPassworduser.Text, txtSdt.Text, txtUserName.Text, email);
-                user.ConnectToSqlServer("Server=.;Database=DATA_USER;Trusted_Connection=True;TrustServerCertificate=True;");
+                user.ConnectToSqlServer(ConnectionStrings.Name);
                 MessageBox.Show("Tạo tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Close();
             }
@@ -191,8 +191,8 @@ namespace Login
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand(@"SELECT TENTK, SDT FROM ACCOUNT_USER
-                                                    WHERE TENTK = @ACC OR SDT = @PHONE", connection);
+                SqlCommand command = new SqlCommand(@"SELECT USERNAME, PHONE FROM ACCOUNT_USER
+                                                    WHERE USERNAME = @ACC OR PHONE = @PHONE", connection);
                 command.Parameters.Add(new SqlParameter("@ACC", SqlDbType.VarChar,100)).Value = this.Username;
                 command.Parameters.Add(new SqlParameter("@PHONE",SqlDbType.VarChar, 10)).Value=this.Phonenumber;
                 using (SqlDataReader reader = command.ExecuteReader())

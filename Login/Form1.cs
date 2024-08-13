@@ -62,7 +62,7 @@ namespace Login
                 return;
             }
             User_SignIn user = new User_SignIn(txtUsername.Text, txtPassword.Text);
-            user.ConnectToSqlServer("Server=.;Database=DATA_USER;Trusted_Connection=True;TrustServerCertificate=True;");
+            user.ConnectToSqlServer(ConnectionStrings.Name);
             errorProvider1.Clear();
             if(user.User_name != "")
             {
@@ -81,7 +81,7 @@ namespace Login
                 if(r == DialogResult.OK)
                 {
                     this.Hide();
-                    App app = new App(user.Name);
+                    App app = new App(user.Name, user.User_name);
                     app.ShowDialog();
                     this.Show();
                 }
@@ -144,7 +144,7 @@ namespace Login
             using (SqlConnection connect = new SqlConnection(connectionString))
             {
                 connect.Open();
-                SqlCommand cmd1 = new SqlCommand(@"SELECT TENTK,HOTEN FROM ACCOUNT_USER JOIN INFOR_USER ON ACCOUNT_USER.SDT = INFOR_USER.SDT WHERE TENTK = @ACCOUNT", connect);
+                SqlCommand cmd1 = new SqlCommand(@"SELECT USERNAME,NAME FROM ACCOUNT_USER JOIN INFOR_USER ON ACCOUNT_USER.PHONE = INFOR_USER.PHONE WHERE USERNAME = @ACCOUNT", connect);
                 cmd1.Parameters.Add(new SqlParameter("@ACCOUNT", SqlDbType.VarChar, 100)).Value = this.user_name;
                 using (SqlDataReader reader = cmd1.ExecuteReader())
                 {
@@ -156,7 +156,7 @@ namespace Login
                     else User_name = "";
                     
                 }
-                SqlCommand cmd2 = new SqlCommand("SELECT MATKHAU FROM ACCOUNT_USER WHERE TENTK = @ACC",connect);
+                SqlCommand cmd2 = new SqlCommand("SELECT PASSWORD FROM ACCOUNT_USER WHERE USERNAME = @ACC",connect);
                 cmd2.Parameters.Add(new SqlParameter("@ACC", SqlDbType.VarChar, 100)).Value = User_name;
                 using (SqlDataReader Reader = cmd2.ExecuteReader())
                 {

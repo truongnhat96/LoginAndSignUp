@@ -51,7 +51,7 @@ namespace Login
             else
             {
                 GetPass pass = new GetPass(rtxtPhone.Text);
-                pass.ConnectToSqlServer("Server=.;Database=DATA_USER;Trusted_Connection=True;TrustServerCertificate=True;");
+                pass.ConnectToSqlServer(ConnectionStrings.Name);
                 if (pass.password == null)
                 {
                     MessageBox.Show("Số điện thoại không liên kết với tài khoản!\nVui lòng thử một số điện thoại khác", "Error ⊙﹏⊙∥", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -84,7 +84,7 @@ namespace Login
             using (SqlConnection connect = new SqlConnection(connectionstring))
             {
                 connect.Open();
-                SqlCommand cmd = new SqlCommand("SELECT MATKHAU FROM ACCOUNT_USER WHERE SDT = @PHONE", connect);
+                SqlCommand cmd = new SqlCommand("SELECT PASSWORD FROM ACCOUNT_USER WHERE PHONE = @PHONE", connect);
                 cmd.Parameters.Add(new SqlParameter("@PHONE", SqlDbType.VarChar, 10)).Value = phone;
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {

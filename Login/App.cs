@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
@@ -17,10 +18,13 @@ namespace Login
         {
             InitializeComponent();
         }
-        public App(string Tennguoidung)
+        public App(string Tennguoidung, string AccountName)
         {
             InitializeComponent();
             this.Tennguoidung = Tennguoidung;
+            this.AccountName = AccountName;
+
+            toolTip1.SetToolTip(lblDatabaseview, "Chỉ quản trị viên");
         }
         private void App_Load(object sender, EventArgs e)
         {
@@ -37,6 +41,19 @@ namespace Login
             DialogResult r = MessageBox.Show("Tài khoản hiện tại sẽ đăng xuất!\nBạn có chắc muốn thoát?", "Cảnh báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             if (r == DialogResult.OK) e.Cancel = false;
             else e.Cancel = true;
+        }
+
+        private void lblDatabaseview_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if(AccountName == "ADMIN123")
+            {
+                DataBase csdl = new DataBase();
+                csdl.Show();
+            }
+            else
+            {
+                MessageBox.Show("Bạn không có quyền làm việc này!\nVui lòng liên hệ admin để biết thêm thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }
