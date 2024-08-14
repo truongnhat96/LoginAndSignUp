@@ -26,21 +26,10 @@ namespace Login
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (chkSeenPass.Checked)
-                txtPassword.PasswordChar = '\0';
-            else txtPassword.PasswordChar = '•';
+                txtPassword.UseSystemPasswordChar = false;
+            else txtPassword.UseSystemPasswordChar = true;
         }
 
-        bool c1 = true, c2 = true;
-        private void txtUsername_Click(object sender, EventArgs e)
-        {
-            if (c1)
-            {
-                c1 = false;
-                txtUsername.ResetText();
-                txtUsername.ForeColor = System.Drawing.SystemColors.MenuText;
-            }
-            
-        }
 
         private void lblForgetpass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -97,29 +86,13 @@ namespace Login
             }
         }
 
-        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-
-        }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             lblTime.Text = DateTime.Now.ToString("HH:mm:ss");
         }
 
-        private void txtPassword_Click(object sender, EventArgs e)
-        {
-            if (c2)
-            {
-                c2 = false;
-                txtPassword.ResetText();
-                txtPassword.PasswordChar = '•';
-                txtPassword.ForeColor = System.Drawing.SystemColors.MenuText;
-            }
-        }
-
-
     }
+
     public interface IConnectDatabase
     {
         void ConnectToSqlServer(string ConnectionString);
